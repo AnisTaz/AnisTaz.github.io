@@ -11,7 +11,7 @@
    - Make a folder called  figures  next to this file.
    - Drop your images in it using the EXACT names shown in each
      <img src="figures/....png">  (or change the name in the tag).
-   - Until the file exists, a neat dashed placeholder shows instead.
+   - A dashed placeholder only appears if an image is missing.
   ============================================================
 -->
 <html lang="en">
@@ -328,7 +328,7 @@
             <div class="fig-box">
               <img src="figures/graco_global_map.png" alt="Global map from Swarm-SLAM on the GRACO dataset"
                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="fig-ph" style="display:flex;">figures/graco_global_map.png</div>
+              <div class="fig-ph" style="display:none;">figures/graco_global_map.png</div>
             </div>
             <figcaption>Global map, Swarm-SLAM on GRACO</figcaption>
           </figure>
@@ -336,7 +336,7 @@
             <div class="fig-box">
               <img src="figures/graco_trajectory_comparison.png" alt="Estimated vs ground-truth trajectories, DiSCo-SLAM vs Swarm-SLAM"
                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="fig-ph" style="display:flex;">figures/graco_trajectory_comparison.png</div>
+              <div class="fig-ph" style="display:none;">figures/graco_trajectory_comparison.png</div>
             </div>
             <figcaption>Estimated vs ground-truth trajectories</figcaption>
           </figure>
@@ -360,7 +360,7 @@
           <div class="fig-box">
             <img src="figures/quadrotor_tracking.png" alt="Quadrotor backstepping vs fuzzy reference tracking"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="fig-ph" style="display:flex;">figures/quadrotor_tracking.png</div>
+            <div class="fig-ph" style="display:none;">figures/quadrotor_tracking.png</div>
           </div>
           <figcaption>Backstepping vs fuzzy reference tracking</figcaption>
         </figure>
@@ -376,7 +376,7 @@
           <div class="fig-box">
             <img src="figures/mpc_obstacle_avoidance.png" alt="MPC end-effector trajectory with obstacle avoidance"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="fig-ph" style="display:flex;">figures/mpc_obstacle_avoidance.png</div>
+            <div class="fig-ph" style="display:none;">figures/mpc_obstacle_avoidance.png</div>
           </div>
           <figcaption>MPC end-effector trajectory, obstacle avoidance</figcaption>
         </figure>
@@ -392,7 +392,7 @@
           <div class="fig-box">
             <img src="figures/diffdrive_tracking.png" alt="Differential-drive robot trajectory tracking in Gazebo"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="fig-ph" style="display:flex;">figures/diffdrive_tracking.png</div>
+            <div class="fig-ph" style="display:none;">figures/diffdrive_tracking.png</div>
           </div>
           <figcaption>Trajectory tracking in simulation</figcaption>
         </figure>
@@ -408,7 +408,7 @@
           <div class="fig-box">
             <img src="figures/pwm_dcmotor.png" alt="Quantum-inspired PWM, DC-motor experimental validation"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="fig-ph" style="display:flex;">figures/pwm_dcmotor.png</div>
+            <div class="fig-ph" style="display:none;">figures/pwm_dcmotor.png</div>
           </div>
           <figcaption>DC-motor experimental validation</figcaption>
         </figure>
@@ -508,7 +508,7 @@
     <!-- EDIT links -->
     <a class="btn btn-primary" href="mailto:anis.tazerout@hotmail.com">anis.tazerout@hotmail.com</a>
     <a class="btn" href="https://github.com/AnisTaz" target="_blank" rel="noopener">github.com/AnisTaz</a>
-    <a class="btn" href="www.linkedin.com/in/anis-lounes-tazerout">LinkedIn</a>
+    <a class="btn" href="https://www.linkedin.com/in/anis-lounes-tazerout/">LinkedIn</a>
   </div>
   <div class="foot">
     <span>© <span id="year"></span> Anis-Lounes Tazerout</span>
