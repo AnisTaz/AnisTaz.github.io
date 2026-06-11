@@ -1,0 +1,599 @@
+<!--
+  ============================================================
+  ANIS-LOUNES TAZEROUT — RESEARCH PORTFOLIO
+  ------------------------------------------------------------
+  HOW TO EDIT (no coding needed for most changes):
+   - Look for the word  EDIT  in comments like this one.
+   - Change the text between the tags, e.g. <h1>Your Name</h1>.
+   - To add a real link, replace the "#" inside href="#".
+
+  HOW TO ADD YOUR FIGURES:
+   - Make a folder called  figures  next to this file.
+   - Drop your images in it using the EXACT names shown in each
+     <img src="figures/....png">  (or change the name in the tag).
+   - Until the file exists, a neat dashed placeholder shows instead.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Anis-Lounes Tazerout · Robotics Researcher</title>
+<meta name="description" content="Control engineer working on multi-robot collaborative SLAM and robotics perception. PhD applicant." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#F6F7F9;
+    --panel:#FFFFFF;
+    --ink:#131820;
+    --graphite:#5B6675;
+    --signal:#0D7D85;
+    --signal-soft:#0d7d8518;
+    --trace:#D8852A;
+    --grid:#E2E6EC;
+    --grid-soft:#EDEFF3;
+
+    --font-display:"Space Grotesk", system-ui, sans-serif;
+    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+    --font-mono:"IBM Plex Mono", ui-monospace, monospace;
+
+    --maxw:1080px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--signal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,247,249,.82);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--grid);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .nav-name{ font-family:var(--font-display); font-weight:600; letter-spacing:-.01em; font-size:17px; }
+  .nav-links{ display:flex; gap:20px; }
+  .nav-links a{ color:var(--graphite); font-family:var(--font-mono); font-size:13px; letter-spacing:.02em; }
+  .nav-links a:hover{ color:var(--ink); }
+  @media (max-width:720px){ .nav-links{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{ position:relative; overflow:hidden; border-bottom:1px solid var(--grid); }
+  .hero-grid{
+    max-width:var(--maxw); margin:0 auto; padding:84px 24px 76px;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--signal); margin:0 0 18px;
+  }
+  .hero h1{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(38px, 5.6vw, 60px); line-height:1.03;
+    letter-spacing:-.03em; margin:0 0 18px;
+  }
+  .hero-lede{ font-size:19px; color:var(--graphite); max-width:40ch; margin:0 0 28px; }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:13.5px; letter-spacing:.01em;
+    padding:10px 16px; border-radius:8px; border:1px solid var(--grid);
+    background:var(--panel); color:var(--ink); transition:all .15s ease;
+  }
+  .btn:hover{ border-color:var(--signal); color:var(--signal); text-decoration:none; transform:translateY(-1px); }
+  .btn-primary{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .btn-primary:hover{ background:var(--signal); border-color:var(--signal); color:#fff; }
+
+  .graph-panel{ position:relative; }
+  .graph-panel svg{ width:100%; height:auto; display:block; }
+  .graph-caption{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--graphite);
+    margin-top:10px; display:flex; gap:18px; flex-wrap:wrap;
+  }
+  .legend-dot{ display:inline-block; width:9px; height:2px; vertical-align:middle; margin-right:6px; }
+  @media (max-width:780px){
+    .hero-grid{ grid-template-columns:1fr; gap:28px; padding:60px 24px 56px; }
+    .graph-panel{ order:-1; max-width:420px; }
+  }
+
+  /* ---------- generic block ---------- */
+  .block{ padding:72px 0; border-bottom:1px solid var(--grid); }
+  .block-head{ display:flex; align-items:baseline; gap:16px; margin:0 0 34px; }
+  .block-num{ font-family:var(--font-mono); font-size:13px; color:var(--signal); }
+  .block-title{ font-family:var(--font-display); font-weight:600; font-size:28px; letter-spacing:-.02em; margin:0; }
+  .block-sub{ color:var(--graphite); margin:-22px 0 30px; max-width:60ch; }
+
+  /* research focus */
+  .focus-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .focus-card{
+    background:var(--panel); border:1px solid var(--grid); border-radius:12px;
+    padding:24px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .focus-card:hover{ border-color:var(--signal); transform:translateY(-2px); }
+  .focus-card h3{ font-family:var(--font-display); font-weight:600; font-size:18px; margin:0 0 8px; letter-spacing:-.01em; }
+  .focus-card p{ margin:0; font-size:15.5px; color:var(--graphite); }
+  .focus-tag{ font-family:var(--font-mono); font-size:12px; color:var(--signal); }
+  @media (max-width:680px){ .focus-grid{ grid-template-columns:1fr; } }
+
+  /* flagship work entry */
+  .work-item{ display:grid; grid-template-columns:160px 1fr; gap:28px; }
+  .work-meta{ font-family:var(--font-mono); font-size:13px; color:var(--graphite); }
+  .work-meta .where{ color:var(--signal); display:block; margin-top:4px; }
+  .work-body h3{ font-family:var(--font-display); font-weight:600; font-size:21px; margin:0 0 10px; letter-spacing:-.01em; }
+  .work-body p{ margin:0 0 14px; color:var(--graphite); font-size:15.5px; }
+  .chiprow{ display:flex; flex-wrap:wrap; gap:7px; }
+  .chip{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--ink);
+    background:var(--signal-soft); border:1px solid var(--grid); padding:3px 9px; border-radius:20px;
+  }
+  @media (max-width:680px){ .work-item{ grid-template-columns:1fr; gap:14px; } }
+
+  /* figures */
+  .fig-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0 0; }
+  @media (max-width:560px){ .fig-row{ grid-template-columns:1fr; } }
+  .fig{ margin:0; }
+  .fig-box{
+    position:relative; aspect-ratio:16/10; border-radius:10px; overflow:hidden;
+    background:var(--grid-soft); border:1px solid var(--grid);
+  }
+  .fig-box img{ width:100%; height:100%; object-fit:contain; display:block; background:#fff; }
+  .fig-ph{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:11.5px; color:var(--graphite);
+    text-align:center; padding:10px;
+    background-image:repeating-linear-gradient(45deg,var(--grid-soft),var(--grid-soft) 8px,#fff 8px,#fff 16px);
+  }
+  .fig figcaption{ font-family:var(--font-mono); font-size:11.5px; color:var(--graphite); margin-top:8px; }
+
+  /* academic projects */
+  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .proj-card{ background:var(--panel); border:1px solid var(--grid); border-radius:12px; padding:18px; display:flex; flex-direction:column; }
+  .proj-card .fig{ margin-bottom:14px; }
+  .proj-card .ptag{ font-family:var(--font-mono); font-size:12px; color:var(--signal); }
+  .proj-card h3{ font-family:var(--font-display); font-weight:600; font-size:18px; margin:4px 0 8px; letter-spacing:-.01em; }
+  .proj-card p{ margin:0 0 14px; font-size:15px; color:var(--graphite); flex:1; }
+  @media (max-width:680px){ .proj-grid{ grid-template-columns:1fr; } }
+
+  /* publications */
+  .pub{ background:var(--panel); border:1px solid var(--grid); border-radius:12px; padding:24px; display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start; }
+  .pub-year{ font-family:var(--font-mono); font-size:13px; color:var(--signal); border-right:1px solid var(--grid); padding-right:20px; white-space:nowrap; }
+  .pub h3{ font-family:var(--font-body); font-weight:600; font-size:17px; margin:0 0 6px; line-height:1.4; }
+  .pub .venue{ font-family:var(--font-mono); font-size:13px; color:var(--graphite); margin:0 0 4px; }
+  .pub .authors{ font-size:14.5px; color:var(--graphite); margin:0; }
+  .pub .authors b{ color:var(--ink); font-weight:600; }
+  @media (max-width:680px){ .pub{ grid-template-columns:1fr; gap:10px; } .pub-year{ border-right:none; padding-right:0; } }
+
+  /* education */
+  .edu-item{ display:grid; grid-template-columns:160px 1fr; gap:28px; padding:20px 0; border-top:1px solid var(--grid-soft); }
+  .edu-item:first-child{ border-top:none; }
+  .edu-when{ font-family:var(--font-mono); font-size:13px; color:var(--graphite); }
+  .edu-body h3{ font-family:var(--font-display); font-weight:600; font-size:18px; margin:0 0 4px; }
+  .edu-body p{ margin:0; color:var(--graphite); font-size:15px; }
+  .edu-body .honor{ font-family:var(--font-mono); font-size:12.5px; color:var(--trace); }
+  @media (max-width:680px){ .edu-item{ grid-template-columns:1fr; gap:8px; } }
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns:1fr; gap:18px; max-width:64ch; }
+  .about-grid p{ margin:0; color:var(--graphite); }
+  .about-grid p b{ color:var(--ink); font-weight:600; }
+
+  /* contact */
+  .contact{ padding:72px 0 30px; }
+  .contact h2{ font-family:var(--font-display); font-weight:600; font-size:28px; letter-spacing:-.02em; margin:0 0 10px; }
+  .contact p{ color:var(--graphite); margin:0 0 26px; max-width:48ch; }
+  .contact-links{ display:flex; flex-wrap:wrap; gap:12px; }
+  .foot{
+    margin-top:48px; padding-top:22px; border-top:1px solid var(--grid);
+    font-family:var(--font-mono); font-size:12px; color:var(--graphite);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  :focus-visible{ outline:2px solid var(--signal); outline-offset:3px; border-radius:4px; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-name">Anis-Lounes Tazerout</span>
+    <nav class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#internship">Internship</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Robotics · Collaborative SLAM · Perception</p>
+      <h1>Anis-Lounes Tazerout</h1>
+      <p class="hero-lede">
+        Control engineer working on multi-robot collaborative SLAM and robotics
+        perception. Research intern at Institut Pascal (PerSyst), applying for
+        PhD positions in robotics.
+      </p>
+      <div class="cta-row">
+        <!-- EDIT: link your CV PDF (upload it next to this file, then use href="cv.pdf") -->
+        <a class="btn btn-primary" href="#">Download CV</a>
+        <a class="btn" href="https://github.com/AnisTaz" target="_blank" rel="noopener">GitHub</a>
+        <!-- EDIT: add your email below (appears here and in Contact) -->
+        <a class="btn" href="mailto:your.email@example.com">Email</a>
+        <!-- EDIT: add Google Scholar / LinkedIn if you have them -->
+        <a class="btn" href="#">Google Scholar</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE: animated pose graph (robot trajectory + loop closures) -->
+    <div class="graph-panel">
+      <svg id="posegraph" viewBox="0 0 420 360" role="img"
+           aria-label="An animated pose graph: a robot trajectory of nodes joined by odometry edges, with loop-closure edges in amber.">
+        <g id="edges" stroke="var(--signal)" stroke-width="1.4" fill="none" opacity="0.55"></g>
+        <g id="loops" stroke="var(--trace)" stroke-width="1.6" fill="none" stroke-dasharray="4 4"></g>
+        <g id="nodes"></g>
+      </svg>
+      <div class="graph-caption">
+        <span><span class="legend-dot" style="background:var(--signal)"></span>odometry edge</span>
+        <span><span class="legend-dot" style="background:var(--trace)"></span>loop closure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== RESEARCH FOCUS ====================== -->
+<section id="research" class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">01</span><h2 class="block-title">Research focus</h2></div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <span class="focus-tag">C-SLAM</span>
+        <h3>Collaborative SLAM</h3>
+        <p>Multi-robot mapping and localization: distributed and centralized pose graph optimization, inter-robot loop closure, and outlier-robust back-ends.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-tag">Perception</span>
+        <h3>LiDAR &amp; multimodal perception</h3>
+        <p>Point cloud registration, place recognition, and fusing heterogeneous sensors (LiDAR, camera, IMU) into a consistent map.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-tag">Estimation</span>
+        <h3>State estimation &amp; control</h3>
+        <p>Trajectory estimation and control theory foundations from a control engineering background, applied to autonomous robots.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-tag">Optimization</span>
+        <h3>Optimal control</h3>
+        <p>Model predictive control and constrained nonlinear optimization for robot motion and obstacle avoidance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== RESEARCH INTERNSHIP ====================== -->
+<section id="internship" class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">02</span><h2 class="block-title">Research internship</h2></div>
+    <article class="work-item">
+      <div class="work-meta">
+        Mar – Aug 2026
+        <span class="where">Institut Pascal · ISPR / PerSyst, Clermont-Ferrand</span>
+      </div>
+      <div class="work-body">
+        <h3>Benchmarking and improving a multi-robot collaborative SLAM framework</h3>
+        <p>
+          Built a reproducible benchmarking pipeline for LiDAR-based collaborative SLAM:
+          run public datasets through each C-SLAM framework, evaluate the estimated
+          trajectories against ground truth with evo (APE / RPE), and compare. On the
+          GRACO dataset I evaluated DiSCo-SLAM, Swarm-SLAM, and LAMP 2.0. DiSCo-SLAM was
+          the most reliable, with roughly 15 times lower trajectory error than Swarm-SLAM,
+          while the centralized LAMP 2.0 showed a map-fusion failure. Supervised by
+          Dr. P. Checchin and Dr. A. K. Aijazi.
+        </p>
+        <div class="chiprow">
+          <span class="chip">ROS 1 / ROS 2</span>
+          <span class="chip">DiSCo-SLAM</span>
+          <span class="chip">Swarm-SLAM</span>
+          <span class="chip">LAMP 2.0</span>
+          <span class="chip">GRACO dataset</span>
+          <span class="chip">evo (APE / RPE)</span>
+          <span class="chip">Docker</span>
+        </div>
+
+        <!-- FIGURES: drop your images in a "figures" folder next to this file. -->
+        <div class="fig-row">
+          <figure class="fig">
+            <div class="fig-box">
+              <img src="figures/graco_global_map.png" alt="Global map from Swarm-SLAM on the GRACO dataset"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fig-ph" style="display:flex;">figures/graco_global_map.png</div>
+            </div>
+            <figcaption>Global map, Swarm-SLAM on GRACO</figcaption>
+          </figure>
+          <figure class="fig">
+            <div class="fig-box">
+              <img src="figures/graco_trajectory_comparison.png" alt="Estimated vs ground-truth trajectories, DiSCo-SLAM vs Swarm-SLAM"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="fig-ph" style="display:flex;">figures/graco_trajectory_comparison.png</div>
+            </div>
+            <figcaption>Estimated vs ground-truth trajectories</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ====================== ACADEMIC PROJECTS ====================== -->
+<section id="projects" class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">03</span><h2 class="block-title">Academic projects</h2></div>
+    <p class="block-sub">Control, modeling, and optimization foundations for robotics perception.</p>
+
+    <div class="proj-grid">
+
+      <!-- Project 1 -->
+      <article class="proj-card">
+        <figure class="fig">
+          <div class="fig-box">
+            <img src="figures/quadrotor_tracking.png" alt="Quadrotor backstepping vs fuzzy reference tracking"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fig-ph" style="display:flex;">figures/quadrotor_tracking.png</div>
+          </div>
+          <figcaption>Backstepping vs fuzzy reference tracking</figcaption>
+        </figure>
+        <span class="ptag">Robust &amp; nonlinear control</span>
+        <h3>Quadrotor control comparison</h3>
+        <p>LQR, Lyapunov-based, and fuzzy controllers compared for reference tracking, in MATLAB / Simulink.</p>
+        <div class="chiprow"><span class="chip">MATLAB / Simulink</span><span class="chip">LQR</span><span class="chip">Fuzzy</span></div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="proj-card">
+        <figure class="fig">
+          <div class="fig-box">
+            <img src="figures/mpc_obstacle_avoidance.png" alt="MPC end-effector trajectory with obstacle avoidance"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fig-ph" style="display:flex;">figures/mpc_obstacle_avoidance.png</div>
+          </div>
+          <figcaption>MPC end-effector trajectory, obstacle avoidance</figcaption>
+        </figure>
+        <span class="ptag">Optimal control &amp; optimization</span>
+        <h3>MPC for a mobile manipulator</h3>
+        <p>Nonlinear, constrained model predictive control with obstacle avoidance, built with do-mpc and CasADi.</p>
+        <div class="chiprow"><span class="chip">do-mpc</span><span class="chip">CasADi</span><span class="chip">MPC</span></div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="proj-card">
+        <figure class="fig">
+          <div class="fig-box">
+            <img src="figures/diffdrive_tracking.png" alt="Differential-drive robot trajectory tracking in Gazebo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fig-ph" style="display:flex;">figures/diffdrive_tracking.png</div>
+          </div>
+          <figcaption>Trajectory tracking in simulation</figcaption>
+        </figure>
+        <span class="ptag">Mobile robot modeling &amp; control</span>
+        <h3>Differential-drive robot</h3>
+        <p>Modeling and trajectory tracking for a differential-drive robot, simulated with ROS and Gazebo.</p>
+        <div class="chiprow"><span class="chip">ROS</span><span class="chip">Gazebo</span><span class="chip">Trajectory tracking</span></div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="proj-card">
+        <figure class="fig">
+          <div class="fig-box">
+            <img src="figures/pwm_dcmotor.png" alt="Quantum-inspired PWM, DC-motor experimental validation"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fig-ph" style="display:flex;">figures/pwm_dcmotor.png</div>
+          </div>
+          <figcaption>DC-motor experimental validation</figcaption>
+        </figure>
+        <span class="ptag">Research &rarr; publication</span>
+        <h3>Quantum-inspired PWM control</h3>
+        <p>A quantum-inspired PWM technique with experimental DC-motor validation, published at IEEE DASA 2025.</p>
+        <div class="chiprow"><span class="chip">PWM</span><span class="chip">DC motor</span><span class="chip">IEEE DASA 2025</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PUBLICATIONS ====================== -->
+<section id="publications" class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">04</span><h2 class="block-title">Publications</h2></div>
+    <!-- EDIT: replace with the exact title, full author list, and DOI when you have them. -->
+    <div class="pub">
+      <div class="pub-year">2025</div>
+      <div>
+        <h3>A quantum-inspired PWM control technique with experimental DC-motor validation</h3>
+        <p class="venue">IEEE DASA 2025</p>
+        <p class="authors"><b>A.-L. Tazerout</b>, and co-authors. <a href="#">[ Add link / DOI ]</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EDUCATION ====================== -->
+<section id="education" class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">05</span><h2 class="block-title">Education</h2></div>
+
+    <div class="edu-item">
+      <div class="edu-when">2025 — 2026</div>
+      <div class="edu-body">
+        <h3>M2, Advanced Systems and Robotics (SAR)</h3>
+        <p>Sorbonne Université, Paris</p>
+        <p class="honor">Ranked 3rd of 36 (semester 1)</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-when">2022 — 2025</div>
+      <div class="edu-body">
+        <h3>Ingénieur d'État, Control Engineering</h3>
+        <p>École Nationale Polytechnique d'Alger (ENP)</p>
+        <p class="honor">Ranked 19th of 1723 at the national entrance exam (top 1%)</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-when">2020 — 2022</div>
+      <div class="edu-body">
+        <h3>Classes préparatoires (MP)</h3>
+        <p>ENP, Algiers</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-when">2020</div>
+      <div class="edu-body">
+        <h3>Baccalauréat, Mathematics</h3>
+        <p>Mention Très Bien, 17.88 / 20</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ABOUT ====================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head"><span class="block-num">06</span><h2 class="block-title">About</h2></div>
+    <div class="about-grid">
+      <p>
+        I am a control engineering graduate from ENP, finishing an M2 in Advanced Systems
+        and Robotics at Sorbonne Université. My work sits at the intersection of
+        <b>perception, estimation, and multi-robot coordination</b>, and I am looking to
+        continue it through a PhD in robotics perception.
+      </p>
+      <p>
+        I care about robotics that helps us understand and protect the natural world,
+        which is part of what draws me to field and environmental applications. Outside
+        research I read about pure mathematics and deep learning, and I am always glad
+        to talk about any of it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACT ====================== -->
+<section id="contact" class="wrap contact">
+  <h2>Get in touch</h2>
+  <p>Open to PhD positions and research collaborations in robotics. The fastest way to reach me is by email.</p>
+  <div class="contact-links">
+    <!-- EDIT links -->
+    <a class="btn btn-primary" href="mailto:your.email@example.com">your.email@example.com</a>
+    <a class="btn" href="https://github.com/AnisTaz" target="_blank" rel="noopener">github.com/AnisTaz</a>
+    <a class="btn" href="#">LinkedIn</a>
+    <a class="btn" href="#">Google Scholar</a>
+  </div>
+  <div class="foot">
+    <span>© <span id="year"></span> Anis-Lounes Tazerout</span>
+    <span>Built as a single HTML file.</span>
+  </div>
+</section>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    var svg = document.getElementById('posegraph');
+    if(!svg) return;
+    var gEdges = document.getElementById('edges');
+    var gLoops = document.getElementById('loops');
+    var gNodes = document.getElementById('nodes');
+    var SVGNS = 'http://www.w3.org/2000/svg';
+
+    var path = [
+      [60,300],[92,262],[120,224],[150,196],[188,182],[228,190],[256,216],
+      [268,254],[252,290],[214,304],[178,292],[156,258],[170,222],[206,210],
+      [248,206],[288,196],[322,170],[344,134],[340,96],[306,80],[268,90],
+      [248,122],[262,158],[300,170],[336,164]
+    ];
+    var closures = [ [10,4], [22,14] ];
+
+    function line(x1,y1,x2,y2){
+      var l=document.createElementNS(SVGNS,'line');
+      l.setAttribute('x1',x1); l.setAttribute('y1',y1);
+      l.setAttribute('x2',x2); l.setAttribute('y2',y2);
+      return l;
+    }
+    function node(x,y){
+      var c=document.createElementNS(SVGNS,'circle');
+      c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',3.4);
+      c.setAttribute('fill','#fff'); c.setAttribute('stroke','var(--ink)'); c.setAttribute('stroke-width','1.4');
+      return c;
+    }
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function drawAll(animated){
+      path.forEach(function(p,i){
+        var n = node(p[0],p[1]);
+        if(animated){ n.style.opacity=0; n.style.transition='opacity .25s ease'; }
+        gNodes.appendChild(n);
+        if(i>0){
+          var prev=path[i-1];
+          var e=line(prev[0],prev[1],p[0],p[1]);
+          if(animated){ e.style.opacity=0; e.style.transition='opacity .25s ease'; }
+          gEdges.appendChild(e);
+        }
+      });
+      closures.forEach(function(c){
+        var a=path[c[0]], b=path[c[1]];
+        var e=line(a[0],a[1],b[0],b[1]);
+        if(animated){ e.style.opacity=0; e.style.transition='opacity .4s ease'; }
+        gLoops.appendChild(e);
+      });
+      if(!animated) return;
+      var nodeEls = gNodes.children, edgeEls = gEdges.children, i=0;
+      var step = setInterval(function(){
+        if(nodeEls[i]) nodeEls[i].style.opacity=1;
+        if(edgeEls[i-1]) edgeEls[i-1].style.opacity=0.55;
+        i++;
+        if(i>=nodeEls.length){
+          clearInterval(step);
+          setTimeout(function(){
+            for(var k=0;k<gLoops.children.length;k++) gLoops.children[k].style.opacity=0.9;
+          }, 250);
+        }
+      }, 70);
+    }
+
+    if(reduce){ drawAll(false); return; }
+    var started=false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && !started){ started=true; drawAll(true); io.disconnect(); }
+      });
+    }, {threshold:0.3});
+    io.observe(svg);
+  })();
+</script>
+
+</body>
+</html>
